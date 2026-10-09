@@ -1,0 +1,451 @@
+import { ArtStyle, ArtStyleDefinition, ComicCharacter } from '../types/comic';
+
+export const ART_STYLES: Record<ArtStyle, ArtStyleDefinition> = {
+  // --- ESTILOS DA IMAGEM DE REFERÊNCIA ---
+  cartoon: {
+    id: 'cartoon',
+    name: 'Cartoon',
+    subtitle: 'Traço amigável e expressivo',
+    origin: 'Animação & Ilustração Moderna',
+    category: 'educational',
+    description: 'Traço amigável, arredondado e expressivo, com cores equilibradas e empatia visual para engajamento instantâneo.',
+    palette: ['#38BDF8', '#F59E0B', '#EF4444', '#10B981', '#1E293B'],
+    styleAnchorPrompt:
+      'friendly expressive cartoon illustration style, clean rounded contour lines, colorful flat shading, welcoming approachable characters, vibrant pedagogical mood, clear composition, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Cartoon',
+  },
+  hand_drawn: {
+    id: 'hand_drawn',
+    name: 'Hand-drawn',
+    subtitle: 'Aparência desenhada à mão',
+    origin: 'Caderno & Ilustração Tradicional',
+    category: 'educational',
+    description: 'Aparência desenhada à mão com texturas naturais de grafite, nanquim e hachuras orgânicas sobre papel.',
+    palette: ['#334155', '#64748B', '#94A3B8', '#F8FAFC', '#D97706'],
+    styleAnchorPrompt:
+      'authentic hand-drawn sketchbook illustration style, graphite pencil and ink line textures, cross-hatching, natural artistic paper grain, organic imperfect lines, thoughtful educational look, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Hand-drawn',
+  },
+  doodle: {
+    id: 'doodle',
+    name: 'Doodle',
+    subtitle: 'Rabiscos leves e criativos',
+    origin: 'Sketchnoting & Pensamento Visual',
+    category: 'educational',
+    description: 'Rabiscos leves e criativos de sketchnoting com ícones lúdicos, setas dinâmicas e simplicidade elegante.',
+    palette: ['#0F172A', '#3B82F6', '#F59E0B', '#10B981', '#FFFFFF'],
+    styleAnchorPrompt:
+      'playful doodle sketchnote illustration style, simple quirky ink sketches, handwritten visual thinking symbols, lighthearted energetic scribbles, creative arrows and conceptual icons, clean background, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Doodle',
+  },
+  cartoon_educacional: {
+    id: 'cartoon_educacional',
+    name: 'Cartoon Educacional',
+    subtitle: 'Cartoon com foco pedagógico',
+    origin: 'Quadrinhos Didáticos & Editoriais',
+    category: 'educational',
+    description: 'Cartoon com foco pedagógico, detalhando conceitos e metáforas visuais claras para aprendizado rápido.',
+    palette: ['#2563EB', '#F59E0B', '#10B981', '#6366F1', '#FEF3C7'],
+    styleAnchorPrompt:
+      'didactic educational cartoon illustration style, clear instructional visual metaphors, friendly relatable characters demonstrating science and technical concepts, balanced colors, sharp clean outlines, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Educacional',
+  },
+  scientific_illustration: {
+    id: 'scientific_illustration',
+    name: 'Scientific Illustration',
+    subtitle: 'Precisão científica',
+    origin: 'Ilustração Científica & Botânica',
+    category: 'educational',
+    description: 'Precisão científica rigorosa com cortes transversais, representação anatômica fiel e clareza de museu.',
+    palette: ['#0F766E', '#1E3A8A', '#854D0E', '#F8FAFC', '#475569'],
+    styleAnchorPrompt:
+      'rigorous scientific illustration, botanical and anatomical precision, detailed cutaway cross-section, refined micro-ink hatching, museum grade scientific clarity, muted sophisticated palette, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Científico',
+  },
+  futuristic_digital: {
+    id: 'futuristic_digital',
+    name: 'Futuristic Digital',
+    subtitle: 'Visual digital moderno',
+    origin: 'UI Holográfica & Sci-Fi Moderno',
+    category: 'educational',
+    description: 'Visual digital moderno com interfaces holográficas, nós de dados luminosos e atmosfera tecnológica de alta energia.',
+    palette: ['#06B6D4', '#3B82F6', '#8B5CF6', '#020617', '#E0F2FE'],
+    styleAnchorPrompt:
+      'sleek futuristic digital illustration style, luminous holographic data interfaces, glowing vector nodes, clean high-tech sci-fi atmosphere, volumetric blue and cyan rim lighting, crisp modern aesthetic, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Digital',
+  },
+  infografico_moderno: {
+    id: 'infografico_moderno',
+    name: 'Infográfico Moderno',
+    subtitle: 'Blocos, ícones e dados',
+    origin: 'Data Visualization & Design Suíço',
+    category: 'educational',
+    description: 'Blocos organizados, ícones estilizados, vetores geométricos e fluxo visual hierarquizado para leitura ágil.',
+    palette: ['#0284C7', '#10B981', '#F59E0B', '#6366F1', '#0F172A'],
+    styleAnchorPrompt:
+      'modern clean infographic illustration style, structured geometric modules, crisp vector icons, flow diagrams and visual hierarchy, flat elegant design, high contrast and scannability, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Infográfico',
+  },
+  minimalista: {
+    id: 'minimalista',
+    name: 'Minimalista',
+    subtitle: 'Poucos elementos, muito ar',
+    origin: 'Minimalismo & Bauhaus',
+    category: 'educational',
+    description: 'Poucos elementos com amplo espaço negativo e ar, concentrando o foco mental no conceito primordial.',
+    palette: ['#09090B', '#71717A', '#F4F4F5', '#0284C7', '#FFFFFF'],
+    styleAnchorPrompt:
+      'minimalist concept illustration style, generous negative space, airy uncluttered composition, refined sparse lines, essential focal shapes only, serene elegant aesthetic, high aesthetic restraint, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Minimalista',
+  },
+  three_d_educacional: {
+    id: 'three_d_educacional',
+    name: '3D Educacional',
+    subtitle: 'Volumes suaves em 3D',
+    origin: '3D Isométrico Estilizado',
+    category: 'educational',
+    description: 'Volumes suaves em 3D com iluminação de estúdio difusa, cantos arredondados e acabamento tátil convidativo.',
+    palette: ['#6366F1', '#EC4899', '#38BDF8', '#FBBF24', '#1E1B4B'],
+    styleAnchorPrompt:
+      'soft stylized 3d educational render, smooth tactile claymorphism surfaces, rounded beveled edges, soft studio lighting, playful 3d isometric volumes, Pixar and Blender aesthetic, vibrant friendly colors, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: '3D Suave',
+  },
+  realista: {
+    id: 'realista',
+    name: 'Realista',
+    subtitle: 'Aparência fotográfica',
+    origin: 'Fotografia & Hiper-realismo Didático',
+    category: 'educational',
+    description: 'Aparência fotográfica cinematográfica com iluminação natural, texturas autênticas e rigor óptico.',
+    palette: ['#1E293B', '#475569', '#94A3B8', '#D97706', '#F8FAFC'],
+    styleAnchorPrompt:
+      'cinematic photographic realism, natural documentary lighting, authentic real-world textures, high dynamic range, sharp focus, educational photography aesthetic, high fidelity, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Realista',
+  },
+  livro_didatico: {
+    id: 'livro_didatico',
+    name: 'Livro Didático',
+    subtitle: 'Padrão editorial clássico',
+    origin: 'Editoriais Didáticos Tradicionais',
+    category: 'educational',
+    description: 'Padrão editorial clássico de livros didáticos consagrados, aliando clareza esquemática a equilíbrio visual.',
+    palette: ['#1D4ED8', '#059669', '#D97706', '#DC2626', '#1E293B'],
+    styleAnchorPrompt:
+      'classic educational textbook illustration style, standard didactic publishing look, clear pedagogic diagrammatic art, balanced accessible colors, academic textbook clarity, friendly educational drawing, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Livro Didático',
+  },
+  colorido_infantil: {
+    id: 'colorido_infantil',
+    name: 'Colorido Infantil',
+    subtitle: 'Cores vivas para crianças',
+    origin: 'Literatura Infantil & Pré-Escolar',
+    category: 'educational',
+    description: 'Cores vivas para crianças com formatos grandes, formas lúdicas e atmosfera acolhedora e divertida.',
+    palette: ['#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6'],
+    styleAnchorPrompt:
+      'cheerful vibrant children book illustration style, bright saturated primary colors, big friendly shapes, playful storybook art, joyous innocent pedagogical atmosphere, joyful picture book aesthetic, no text',
+    borderStyle: 'border-2 border-slate-700 shadow-md',
+    tag: 'Infantil',
+  },
+
+  // --- ESTILOS COMPLEMENTARES ---
+  modern_manga: {
+    id: 'modern_manga',
+    name: 'Mangá Shonen & Seinen',
+    origin: 'Estilo Japonês Contemporâneo',
+    category: 'manga_anime',
+    description: 'Linhas de velocidade dinâmicas, hachuras de retícula screentone, enquadramentos dramáticos com alto contraste e acentos azul elétrico.',
+    palette: ['#09090B', '#71717A', '#F4F4F5', '#38BDF8', '#818CF8'],
+    styleAnchorPrompt:
+      'modern technical shonen manga aesthetic, crisp clean black ink lineart, screentone shading, high contrast, dramatic speed lines, expressive anime eyes, dynamic angles, no text',
+    borderStyle: 'border-3 border-neutral-900 shadow-[4px_4px_0px_#0284c7]',
+    tag: 'Mangá Técnico',
+  },
+  anime_cinematic: {
+    id: 'anime_cinematic',
+    name: 'Anime Cinematográfico / Cel-Shading',
+    origin: 'Animação Japonesa (Estilo Shinkai / Kyoto Animation)',
+    category: 'manga_anime',
+    description: 'Cores vibrantes, iluminação mágica com efeito golden hour, cel-shading nítido, nuvens volumétricas e atmosfera estética rica.',
+    palette: ['#0284C7', '#F43F5E', '#FBBF24', '#4F46E5', '#FEF08A'],
+    styleAnchorPrompt:
+      'modern high-budget anime movie aesthetic, Makoto Shinkai lighting style, luminous cel shading, vibrant cinematic colors, golden hour rim light, highly detailed anime scenery, gorgeous atmospheric sky, no text',
+    borderStyle: 'border-3 border-sky-950 shadow-[4px_4px_0px_#38bdf8]',
+    tag: 'Anime Vibrante',
+  },
+  cartoon_retro: {
+    id: 'cartoon_retro',
+    name: 'Cartoon Ocidental & Animação Clássica',
+    origin: 'Saturday Morning Cartoons (Anos 90-2000)',
+    category: 'cartoon',
+    description: 'Traços elásticos e arredondados, poses expressivas e cômicas, cores primárias saturadas e energia divertida de laboratório animado.',
+    palette: ['#E11D48', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6'],
+    styleAnchorPrompt:
+      'energetic western 1990s cartoon style, Dexter Laboratory and Genndy Tartakovsky animation aesthetic, thick expressive ink contours, exaggerated bouncy poses, vibrant saturated flat colors, fun comedic visual metaphors, clean cartoon composition, no text',
+    borderStyle: 'border-4 border-black shadow-[5px_5px_0px_#ef4444]',
+    tag: 'Cartoon Divertido',
+  },
+  chibi_kawaii: {
+    id: 'chibi_kawaii',
+    name: 'Chibi & Kawaii Super-Deformed',
+    origin: 'Ilustração Japonesa SD / Fofa',
+    category: 'cartoon',
+    description: 'Personagens cabeçudinhos com proporções 2:1, olhos gigantes brilhantes, expressões emotivas acolhedoras e metáforas conceituais amigáveis.',
+    palette: ['#F472B6', '#38BDF8', '#FCD34D', '#A7F3D0', '#C084FC'],
+    styleAnchorPrompt:
+      'adorable chibi kawaii anime illustration, super deformed cute character proportions with oversized head and big sparkling expressive eyes, soft pastel tones, rounded friendly objects, clean bold lineart, cheerful pedagogical mood, no text',
+    borderStyle: 'border-3 border-pink-900 shadow-[4px_4px_0px_#f472b6]',
+    tag: 'Chibi Fofo',
+  },
+  pixel_art: {
+    id: 'pixel_art',
+    name: 'Pixel Art 16-Bit / Retrogaming',
+    origin: 'Jogos SNES & Game Boy Advance',
+    category: 'retro_digital',
+    description: 'Estética nostálgica de pixels nítidos, paleta de cores indexada, barras de status didáticas e ambientação de RPG e aventura tecnológica.',
+    palette: ['#16A34A', '#E11D48', '#2563EB', '#EAB308', '#0F172A'],
+    styleAnchorPrompt:
+      '16-bit pixel art graphic novel, crisp pixel graphics, retro gaming aesthetic, vibrant limited color palette, isometric and side-scroller framing, nostalgic JRPG didactic cutscene, clean pixel borders, no text',
+    borderStyle: 'border-4 border-emerald-950 shadow-[4px_4px_0px_#10b981]',
+    tag: 'Pixel Art 16-Bit',
+  },
+  cyberpunk_noir: {
+    id: 'cyberpunk_noir',
+    name: 'Cyberpunk & Tech Noir',
+    origin: 'Sci-Fi Distópico e Hologramas',
+    category: 'retro_digital',
+    description: 'Cidades escuras com chuva, neon magenta e ciano cintilantes, interfaces holográficas flutuantes e alta tecnologia investigativa.',
+    palette: ['#06B6D4', '#EC4899', '#8B5CF6', '#1E1B4B', '#020617'],
+    styleAnchorPrompt:
+      'cyberpunk graphic novel aesthetic, tech noir lighting, neon cyan and hot pink glow, rain-slicked surfaces, holographic data projections, high tech futuristic atmosphere, gritty ink shadows, no text',
+    borderStyle: 'border-3 border-cyan-950 shadow-[4px_4px_0px_#ec4899]',
+    tag: 'Cyberpunk Neon',
+  },
+  clean_vector_bd: {
+    id: 'clean_vector_bd',
+    name: 'Traço Ligne Claire / Infográfico',
+    origin: 'Quadrinho Franco-Belga & Editorial',
+    category: 'comics',
+    description: 'Espessura de linha uniforme, cores planas suaves e harmoniosas, arquitetura e diagramas de máxima clareza pedagógica.',
+    palette: ['#0D9488', '#F97316', '#6366F1', '#F8FAFC', '#334155'],
+    styleAnchorPrompt:
+      'ligne claire Franco-Belgian comic art style, clean uniform ink contour, flat refined editorial palette, architectural precision, clear didactic infographic composition, no text',
+    borderStyle: 'border-2 border-slate-800 shadow-[4px_4px_0px_#0f766e]',
+    tag: 'Ligne Claire',
+  },
+  vintage_comic: {
+    id: 'vintage_comic',
+    name: 'HQ Clássica (Era de Prata)',
+    origin: 'Marvel/DC Anos 60-70',
+    category: 'comics',
+    description: 'Traço a bico de pena espesso, retículas Ben-Day pontilhadas, cores primárias vibrantes e papel vintage levemente envelhecido.',
+    palette: ['#E11D48', '#2563EB', '#F59E0B', '#1E293B', '#FEF3C7'],
+    styleAnchorPrompt:
+      'vintage 1960s comic book style, bold black ink outlines, Ben-Day dot shading, newsprint paper texture, dynamic comic book framing, retro silver age illustration, no text',
+    borderStyle: 'border-4 border-black shadow-[5px_5px_0px_#000]',
+    tag: 'HQ Clássica',
+  },
+  watercolor_graphic_novel: {
+    id: 'watercolor_graphic_novel',
+    name: 'Graphic Novel Aquarelada',
+    origin: 'Romance Gráfico Europeu',
+    category: 'comics',
+    description: 'Texturas orgânicas de aquarela, pinceladas expressivas, iluminação suave e metáforas conceituais poéticas.',
+    palette: ['#475569', '#94A3B8', '#D97706', '#E2E8F0', '#0F172A'],
+    styleAnchorPrompt:
+      'expressive indie graphic novel art, hand-painted watercolor textures, soft ambient light, organic ink wash, literary pedagogical concept art, no text',
+    borderStyle: 'border-2 border-stone-800 shadow-[4px_4px_0px_#b45309]',
+    tag: 'Aquarela Artística',
+  },
+};
+
+export const CHARACTER_ARCHETYPES: (ComicCharacter & { title: string; color: string })[] = [
+  // --- MANGÁ & ANIME ---
+  {
+    id: 'char_kenji',
+    role: 'mentor',
+    name: 'Sensei Kenji',
+    title: 'Mestre em Engenharia (Mangá)',
+    category: 'manga_anime',
+    style_badge: 'Mangá Seinen',
+    visual_description:
+      'Homem de 38 anos, estilo mangá seinen, óculos finos cujas lentes refletem dados cibernéticos, cabelo preto desgrenhado, jaqueta técnica e postura serena de mentor mestre.',
+    avatar_color: '#38BDF8',
+    color: '#38BDF8',
+  },
+  {
+    id: 'char_yuki',
+    role: 'learner',
+    name: 'Yuki',
+    title: 'Estudante Prodígio (Anime)',
+    category: 'manga_anime',
+    style_badge: 'Anime Shonen',
+    visual_description:
+      'Jovem de 17 anos em traço de anime moderno, presilhas mecha luminosas no cabelo azul-escuro curto, olhos roxos brilhantes cheios de determinação e tablet holográfico portátil.',
+    avatar_color: '#818CF8',
+    color: '#818CF8',
+  },
+  {
+    id: 'char_ren',
+    role: 'learner',
+    name: 'Ren',
+    title: 'Estudante Impulsivo (Mangá)',
+    category: 'manga_anime',
+    style_badge: 'Shonen Clássico',
+    visual_description:
+      'Garoto de 16 anos em estilo shonen mangá, cabelo espetado castanho, fita adesiva no nariz, jaqueta esportiva com capuz amarelo e bloquinho de desenhos cheio de anotações dinâmicas.',
+    avatar_color: '#F97316',
+    color: '#F97316',
+  },
+
+  // --- CARTOON OCIDENTAL ---
+  {
+    id: 'char_pipoca',
+    role: 'mentor',
+    name: 'Prof. Pipoca',
+    title: 'Cientista Maluco (Cartoon)',
+    category: 'cartoon',
+    style_badge: 'Cartoon 90s',
+    visual_description:
+      'Cientista excêntrico e muito carismático em traço de cartoon anos 90, óculos redondos tortos, jaleco amassado com tubos de ensaio coloridos nos bolsos e cabelo branco arrepiado.',
+    avatar_color: '#EF4444',
+    color: '#EF4444',
+  },
+  {
+    id: 'char_tico',
+    role: 'learner',
+    name: 'Tico',
+    title: 'Aprendiz Elástico (Cartoon)',
+    category: 'cartoon',
+    style_badge: 'Cartoon Clássico',
+    visual_description:
+      'Garoto com animação elástica e olhos expressivos exagerados estilo cartoon, boné virado para trás, camiseta listrada verde e queixo apoiado na mão enquanto pensa.',
+    avatar_color: '#10B981',
+    color: '#10B981',
+  },
+  {
+    id: 'char_babi_bot',
+    role: 'mentor',
+    name: 'Babi Bot',
+    title: 'Assistente Flutuante (Toon)',
+    category: 'cartoon',
+    style_badge: 'Toon Bot',
+    visual_description:
+      'Robôzinha assistente flutuante em formato arredondado de torradeira inteligente, antenas que piscam e visor de LED expressivo que faz carinhas emojis cômicas.',
+    avatar_color: '#F59E0B',
+    color: '#F59E0B',
+  },
+
+  // --- CHIBI & KAWAII ---
+  {
+    id: 'char_mochi',
+    role: 'mentor',
+    name: 'Mestre Mochi',
+    title: 'Sábio Fofinho (Chibi)',
+    category: 'chibi',
+    style_badge: 'Chibi Kawaii',
+    visual_description:
+      'Corujinha chibi redondinha super fofa com capelo acadêmico preto minúsculo, óculos redondos e uma varinha apontadora com ponta de estrela brilhante.',
+    avatar_color: '#A855F7',
+    color: '#A855F7',
+  },
+  {
+    id: 'char_pompom',
+    role: 'learner',
+    name: 'Pompom',
+    title: 'Gatinho Curioso (Kawaii)',
+    category: 'chibi',
+    style_badge: 'Kawaii SD',
+    visual_description:
+      'Gatinho antropomórfico chibi super-deformed com bochechas coradas, macacãozinho azul, orelhinhas atentas e olhinhos cintilantes cheios de perguntas.',
+    avatar_color: '#EC4899',
+    color: '#EC4899',
+  },
+
+  // --- CYBERPUNK & TECH NOIR ---
+  {
+    id: 'char_kira',
+    role: 'mentor',
+    name: 'Kira Netrunner',
+    title: 'Hacker Veterana (Cyberpunk)',
+    category: 'tech_noir',
+    style_badge: 'Cyberpunk',
+    visual_description:
+      'Hacker sênior em estética cyberpunk neon, cabelo curto magenta assimétrico, visor cibernético transparente sobre o olho esquerdo e jaqueta com cabos de fibra óptica pulsantes.',
+    avatar_color: '#06B6D4',
+    color: '#06B6D4',
+  },
+  {
+    id: 'char_zero',
+    role: 'learner',
+    name: 'Zero',
+    title: 'Androide Estagiário (Cyber)',
+    category: 'tech_noir',
+    style_badge: 'Androide Sci-Fi',
+    visual_description:
+      'Androide novato de corpo esguio branco fosco, visor digital facial exibindo perguntas em pixels cianos e mochila com bateria solar translúcida.',
+    avatar_color: '#6366F1',
+    color: '#6366F1',
+  },
+
+  // --- CLÁSSICO & DIDÁTICO ---
+  {
+    id: 'char_byte',
+    role: 'mentor',
+    name: 'Dr. Byte',
+    title: 'Especialista em Sistemas (Clássico)',
+    category: 'classic',
+    style_badge: 'Didático Clássico',
+    visual_description:
+      'Homem de 40 anos, óculos redondos de aro fino, jaleco de tecnologia com detalhes azuis, cabelo castanho despenteado e expressão acolhedora e confiante.',
+    avatar_color: '#2563EB',
+    color: '#2563EB',
+  },
+  {
+    id: 'char_leo',
+    role: 'learner',
+    name: 'Leo',
+    title: 'Estudante Curioso (Clássico)',
+    category: 'classic',
+    style_badge: 'Didático Clássico',
+    visual_description:
+      'Jovem de 19 anos, moletom amarelo mostarda, fones de ouvido no pescoço, olhos arregalados de curiosidade e bloquinho de anotações.',
+    avatar_color: '#F59E0B',
+    color: '#F59E0B',
+  },
+  {
+    id: 'char_sofia',
+    role: 'mentor',
+    name: 'Profª. Sofia',
+    title: 'Cientista e Pesquisadora',
+    category: 'classic',
+    style_badge: 'Ligne Claire',
+    visual_description:
+      'Mulher de 35 anos, pele morena, tranças com presilha holográfica, tablet em mãos, colete cáqui prático, olhar analítico e pedagógico.',
+    avatar_color: '#059669',
+    color: '#059669',
+  },
+  {
+    id: 'char_maya',
+    role: 'learner',
+    name: 'Maya',
+    title: 'Desenvolvedora Júnior',
+    category: 'classic',
+    style_badge: 'Modern Indie',
+    visual_description:
+      'Jovem de 22 anos, jaqueta jeans cheia de patches e broches de código, cabelo curto tingido de roxo, caneca de café e olhar questionador.',
+    avatar_color: '#D946EF',
+    color: '#D946EF',
+  },
+];

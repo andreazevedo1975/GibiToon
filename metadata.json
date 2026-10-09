@@ -1,0 +1,6 @@
+{
+  "name": "ComicDocs AI",
+  "description": "Transforme qualquer tema de estudo em apostilas pedagógicas ilustradas no formato de histórias em quadrinhos (Graphic Novels/Webtoons educativos) com roteiro inteligente e balões vetoriais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

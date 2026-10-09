@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-comic {
+    font-family: 'Comic Neue', cursive, sans-serif;
+  }
+  .font-cartoon {
+    font-family: 'Fredoka', cursive, sans-serif;
+  }
+  .font-bangers {
+    font-family: 'Bangers', cursive, sans-serif;
+    letter-spacing: 0.05em;
+  }
+  .font-display {
+    font-family: 'Bangers', cursive, sans-serif;
+    letter-spacing: 0.05em;
+  }
+  .font-tech {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* Custom halftones, Ben-Day dots and cartoon styling */
+.comic-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 0);
+  background-size: 8px 8px;
+}
+
+.comic-dots-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 8px 8px;
+}
+
+.comic-dots-yellow {
+  background-image: radial-gradient(rgba(250, 204, 21, 0.15) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+
+.comic-border-shadow {
+  box-shadow: 3px 3px 0px 0px #000000;
+}
+
+.comic-border-shadow-lg {
+  box-shadow: 5px 5px 0px 0px #000000;
+}
+
+.comic-border-shadow-amber {
+  box-shadow: 3px 3px 0px 0px #f59e0b;
+}
+
+.comic-border-shadow-cyan {
+  box-shadow: 3px 3px 0px 0px #06b6d4;
+}
+
+.comic-border-shadow-white {
+  box-shadow: 3px 3px 0px 0px #ffffff;
+}
+
+/* Cartoon Neobrutalist buttons with tactile press interaction */
+.btn-cartoon-yellow {
+  background-color: #facc15;
+  color: #0f172a;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px 0px #000000;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-cartoon-yellow:hover {
+  background-color: #fde047;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.btn-cartoon-yellow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+.btn-cartoon-cyan {
+  background-color: #38bdf8;
+  color: #0f172a;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px 0px #000000;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-cartoon-cyan:hover {
+  background-color: #7dd3fc;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.btn-cartoon-cyan:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+.btn-cartoon-coral {
+  background-color: #fb7185;
+  color: #ffffff;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px 0px #000000;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-cartoon-coral:hover {
+  background-color: #f43f5e;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.btn-cartoon-coral:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+/* Cartoon paper panel card */
+.comic-box {
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  border-radius: 1rem;
+}
+
+/* Print Styles for A4 Comic Booklet */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 8mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-page-break {
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 0 !important;
+  }
+
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .a4-page-sheet {
+    box-shadow: none !important;
+    border: 3px solid #000000 !important;
+    margin-bottom: 0 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    min-height: 275mm !important;
+  }
+}
+
